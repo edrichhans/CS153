@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class user_model extends CI_Model
+class admin_model extends CI_Model
 {
   function __construct()
   {
@@ -12,7 +12,7 @@ class user_model extends CI_Model
   //get the username & password from tbl_usrs
   function get_users()
   {
-    $users = "select name, address, birthday, status from logins NATURAL JOIN users";
+    $users = "select id, name, address, birthday, status from logins NATURAL JOIN users";
     $users_query = $this->db->query($users);
     return $users_query->result_array();
   }
@@ -30,4 +30,9 @@ class user_model extends CI_Model
     $q = $this->db->query($query_user, array($formdata['name'], $formdata['address'], $formdata['birthday']));
   }
 
+  function get_other_info($id){
+    $user_info = "select name, address, birthday, username from users NATURAL JOIN logins where id = ?";
+    $user_info_query = $this->db->query($user_info, array($id));
+    return $user_info_query->row_array();
+  }
 }?>

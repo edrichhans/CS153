@@ -10,7 +10,7 @@
     } 
   
   	public function index() { 
-      if($this->session->userdata('username')){
+      if($this->session->userdata('super') == 0 && $this->session->userdata('loginuser')){
       	$info = $this->user_model->get_info($this->session);
       	$data = array(
       		'username' => $info['username'],
@@ -22,10 +22,18 @@
       	$data['users'] = $users;
       	$this->load->view('user_view', $data);
       }
-      else{
-        redirect("login");
+      else if($this->session->userdata('super') == 1 && $this->session->userdata('loginuser')){
+        redirect("admin");
     	}
+      else{
+        redirect("/");
+      }
     } 
-  } 
 
+    public function update_user(){
+      $form_data = $this->input->post();
+      $this->user_model->update_user($this->session->userdata('username'), $form_data);
+      redirect("user");
+    }
+  } 
 ?>

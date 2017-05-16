@@ -43,15 +43,21 @@ class login extends CI_Controller
         $usr_result = $this->login_model->get_user($username, $password);
         if ($usr_result->num_rows() > 0) //active user record is present
         {
+          $super = $usr_result->row()->super;
           //set the session variables
           $sessiondata = array(
             'username' => $username,
             'loginuser' => TRUE,
-            'super' => $usr_result->row()->super
+            'super' => $super
           );
-          // echo $usr_result->row()->super;
           $this->session->set_userdata($sessiondata);
-          redirect("user");
+          //redirect to admin page or not
+          if($super){ //admin
+            redirect("admin");
+          }
+          else{ //user
+            redirect("user");
+          }
         }
         else
         {

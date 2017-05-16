@@ -55,7 +55,16 @@
             Birthday
           </th>
           <th>
+            Address
+          </th>
+          <th>
             Logged in?
+          </th>
+          <th>
+          </th>
+          <th>
+          </th>
+          <th>
           </th>
         </tr>
         <?php 
@@ -63,10 +72,16 @@
             $name = $user['name'];
             $birthday = $user['birthday'];
             $status = $user['status'];
+            $address = $user['address'];
+            $id = $user['id'];
             echo "<tr>";
             echo "<td>$name</td>";
             echo "<td>$birthday</td>";
+            echo "<td>$address</td>";
             echo "<td>$status</td>";
+            echo "<td><input type='button' value='Edit' onclick='window.location.replace(\"/codeigniter/edit_other_user?id=" . $id . "\")'></td>";
+            echo "<td><input type='button' value='Delete' data-id=" . $id . "></td>";
+            echo "<td><input type='button' value='SUPER' data-id=" . $id . "></td>";
             echo "</tr>";
           }
         ?>
