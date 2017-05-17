@@ -34,8 +34,8 @@
 	</head>
 	<body>
     <h2>Welcome, <?php echo $name?></h2>
-    <button type="button" onclick="window.location.replace('/codeigniter/edit_user')">Edit Profile</button>
-    <button type="button" onclick="window.location.replace('/codeigniter/logout')">Logout</button>
+    <button type="button" onclick="window.location.replace('edit_user')">Edit Profile</button>
+    <button type="button" onclick="window.location.replace('logout')">Logout</button>
 	    <h4>
         Username: <?php echo $username ?>
       </h4>
@@ -79,7 +79,7 @@
             echo "<td>$birthday</td>";
             echo "<td>$address</td>";
             echo "<td>$status</td>";
-            echo "<td><input type='button' value='Edit' onclick='window.location.replace(\"/codeigniter/edit_other_user?id=" . $id . "\")'></td>";
+            echo "<td><input type='button' value='Edit' onclick='window.location.replace(\"edit_other_user?id=" . $id . "\")'></td>";
             echo "<td><input type='button' value='Delete' data-id=" . $id . "></td>";
             echo "<td><input type='button' value='SUPER' data-id=" . $id . "></td>";
             echo "</tr>";
