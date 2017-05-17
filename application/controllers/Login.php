@@ -51,6 +51,7 @@ class login extends CI_Controller
             'super' => $super
           );
           $this->session->set_userdata($sessiondata);
+          $this->session->sess_expiration = 60;
           //redirect to admin page or not
           if($super){ //admin
             redirect("admin");
