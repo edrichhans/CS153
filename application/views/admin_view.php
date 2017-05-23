@@ -35,6 +35,7 @@
 	<body>
     <h2>Welcome, <?php echo $name?></h2>
     <button type="button" onclick="window.location.replace('edit_user')">Edit Profile</button>
+    <button type="button" onclick="window.location.replace('add_user')">Create User</button>
     <button type="button" onclick="window.location.replace('logout')">Logout</button>
 	    <h4>
         Username: <?php echo $username ?>
@@ -80,7 +81,7 @@
             echo "<td>$address</td>";
             echo "<td>$status</td>";
             echo "<td><input type='button' value='Edit' onclick='window.location.replace(\"edit_other_user?id=" . $id . "\")'></td>";
-            echo "<td><input type='button' value='Delete' data-id=" . $id . "></td>";
+            echo "<td><input type='button' value='Delete' onclick='window.location.replace(\"delete_other_user?id=" . $id . "\")'></td>";
             echo "<td><input type='button' value='SUPER' data-id=" . $id . "></td>";
             echo "</tr>";
           }
