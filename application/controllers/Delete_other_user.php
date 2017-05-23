@@ -10,10 +10,14 @@
     }
 
     public function index(){
+      if(time() - $this->session->userdata('time') > 900){
+        $this->session->sess_destroy();
+        redirect('login');
+      }
         $id = $_GET['id'];
         $info = $this->delete_other_user_model->delete_other_user($id);
         redirect("admin");
-      }
     }
+  }
 
 ?>

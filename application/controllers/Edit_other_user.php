@@ -10,6 +10,10 @@
     }
 
     public function index(){
+      if(time() - $this->session->userdata('time') > 900){
+        $this->session->sess_destroy();
+        redirect('login');
+      }
       if($this->session->userdata('super') && $this->session->userdata('loginuser')){
         if(!isset($_GET['id'])){
           redirect('/');

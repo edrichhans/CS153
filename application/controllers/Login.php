@@ -48,7 +48,8 @@ class Login extends CI_Controller
           $sessiondata = array(
             'username' => $username,
             'loginuser' => TRUE,
-            'super' => $super
+            'super' => $super,
+            'time' => time()
           );
           $this->session->set_userdata($sessiondata);
           $this->session->sess_expiration = 60;
