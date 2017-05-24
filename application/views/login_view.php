@@ -18,7 +18,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-sm-6">
-      <h1>LIVEDOTCOM</h1>
+      <h1>CS 153</h1>
     </div>
     <div class="col-lg-6 col-sm-6">
       

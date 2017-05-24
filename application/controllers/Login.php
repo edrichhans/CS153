@@ -25,9 +25,12 @@ class Login extends CI_Controller
     $username = $this->input->post("txt_username");
     $password = $this->input->post("txt_password");
 
+    $username = $form_data = $this->security->xss_clean($username);
+    // $password = $form_data = $this->security->xss_clean($password);
+
     //set validations
-    $this->form_validation->set_rules("txt_username", "Username", "trim|required");
-    $this->form_validation->set_rules("txt_password", "Password", "trim|required");
+    $this->form_validation->set_rules("txt_username", "Username", "trim|required|min_length[4]|max_length[20]");
+    $this->form_validation->set_rules("txt_password", "Password", "trim|required|min_length[8]|max_length[20]");
 
     if ($this->form_validation->run() == FALSE)
     {

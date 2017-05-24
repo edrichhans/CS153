@@ -62,6 +62,9 @@
             Logged in?
           </th>
           <th>
+            Super?
+          </th>
+          <th>
           </th>
           <th>
           </th>
@@ -75,6 +78,7 @@
             $name = $user['name'];
             $birthday = $user['birthday'];
             $status = $user['status'];
+            $super = $user['super'];
             $address = $user['address'];
             $id = $user['id'];
             echo "<tr>";
@@ -82,6 +86,7 @@
             echo "<td>$birthday</td>";
             echo "<td>$address</td>";
             echo "<td>$status</td>";
+            echo "<td>$super</td>";
             echo "<td><input type='button' value='Edit' onclick='window.location.replace(\"edit_other_user?id=" . $id . "\")'></td>";
             echo "<td><input type='button' value='Delete' onclick='window.location.replace(\"delete_other_user?id=" . $id . "\")'></td>";
             echo "<td><input type='button' value='SUPER' onclick='window.location.replace(\"super_other_user?id=" . $id . "\")'></td>";

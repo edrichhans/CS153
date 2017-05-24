@@ -12,7 +12,7 @@ class admin_model extends CI_Model
   //get the username & password from tbl_usrs
   function get_users()
   {
-    $users = "select id, name, address, birthday, status from logins NATURAL JOIN users";
+    $users = "select id, name, address, birthday, status, super from logins NATURAL JOIN users";
     $users_query = $this->db->query($users);
     return $users_query->result_array();
   }

@@ -7,6 +7,8 @@
     	$this->load->database();
     	$this->load->helper('url');
 	    $this->load->model('user_model');
+      $this->load->helper('form');
+      $this->load->library('form_validation');
     } 
   
   	public function index() { 
@@ -49,6 +51,16 @@
     public function update_user(){
       $form_data = $this->input->post();
       $form_data = $this->security->xss_clean($form_data);
+
+      $this->form_validation->set_rules('name', 'name', 'trim|required|max_length[50]');
+      $this->form_validation->set_rules('address', 'address', 'trim|required|max_length[50]');
+      $this->form_validation->set_rules('birthday', 'birthday', 'trim|required|max_length[50]');
+      // $this->form_validation->set_rules('username', 'username', "trim|required|min_length[6]|max_length[20]");
+      if ($this->form_validation->run() == FALSE){
+        //validation fails
+        redirect('/');
+      }
+
       if(!$this->isRealDate($form_data['birthday'])) redirect('/');
       $this->user_model->update_user($this->session->userdata('username'), $form_data);
       redirect("user");
