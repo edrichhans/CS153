@@ -74,8 +74,8 @@
         // return;
         redirect('create_user');
       }
-      $this->admin_model->create_user($form_data);
-      redirect('/');
+      if($this->admin_model->create_user($form_data)) redirect('/');
+      else redirect('create_user');
     }
   } 
 ?>
