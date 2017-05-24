@@ -11,8 +11,7 @@
   
   	public function index() { 
       if(time() - $this->session->userdata['time'] > 900){
-        $this->session->sess_destroy();
-        redirect('login');
+        redirect('logout');
       }
       if($this->session->userdata('super') == 0 && $this->session->userdata('loginuser')){
       	$info = $this->user_model->get_info($this->session);
@@ -34,8 +33,23 @@
       }
     } 
 
+    public function isRealDate($date){ 
+      if (false === strtotime($date)) { 
+        return false;
+      } 
+      else{ 
+        list($year, $month, $day) = explode('-', $date); 
+        if (false === checkdate($month, $day, $year)) { 
+          return false;
+        } 
+      } 
+      return true;
+    }
+
     public function update_user(){
       $form_data = $this->input->post();
+      $form_data = $this->security->xss_clean($form_data);
+      if(!$this->isRealDate($form_data['birthday'])) redirect('/');
       $this->user_model->update_user($this->session->userdata('username'), $form_data);
       redirect("user");
     }

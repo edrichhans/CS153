@@ -35,7 +35,8 @@
 	<body>
     <h2>Edit page for <?php echo $username; ?></h2>
     <button type="button" onclick="window.location.replace('/')">Dashboard</button>
-    <form action='admin/update_other_user' method='post'>
+    <!-- <form action='admin/update_other_user' method='post'> -->
+    <?php echo form_open(base_url( 'admin/update_other_user' ));?>
       <input type='hidden' name='username' value=<?php echo "\"{$username}\"" ?>>
       Name: <input type='text' name='name' value=<?php echo "\"{$name}\"" ?> >
       Address: <input type='text' name='address' value=<?php echo "\"{$address}\""; ?> >

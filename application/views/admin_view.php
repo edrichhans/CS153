@@ -67,6 +67,8 @@
           </th>
           <th>
           </th>
+          <th>
+          </th>
         </tr>
         <?php 
           foreach($users as $user){
@@ -82,7 +84,8 @@
             echo "<td>$status</td>";
             echo "<td><input type='button' value='Edit' onclick='window.location.replace(\"edit_other_user?id=" . $id . "\")'></td>";
             echo "<td><input type='button' value='Delete' onclick='window.location.replace(\"delete_other_user?id=" . $id . "\")'></td>";
-            echo "<td><input type='button' value='SUPER' data-id=" . $id . "></td>";
+            echo "<td><input type='button' value='SUPER' onclick='window.location.replace(\"super_other_user?id=" . $id . "\")'></td>";
+            echo "<td><input type='button' value='UN-SUPER' onclick='window.location.replace(\"unsuper_other_user?id=" . $id . "\")'></td>";
             echo "</tr>";
           }
         ?>

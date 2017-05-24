@@ -34,11 +34,12 @@
 	</head>
 	<body>
     <h2>Edit page for <?php echo $username; ?></h2>
-    <button type="button" onclick="window.location.replace('user')">Dashboard</button>
-    <form action='user/update_user' method='post'>
-      Name: <input type='text' name='name' value=<?php echo $name; ?> >
-      Address: <input type='text' name='address' value=<?php echo $address; ?> >
-      Birthday: <input type='text' name='birthday' value=<?php echo $birthday; ?> >
+    <button type="button" onclick="window.location.replace('/')">Dashboard</button>
+    <!-- <form action='user/update_user' method='post'> -->
+    <?php echo form_open(base_url( 'user/update_user' ));?>
+      Name: <input type='text' name='name' value=<?php echo "\"{$name}\"" ?> >
+      Address: <input type='text' name='address' value=<?php echo "\"{$address}\""; ?> >
+      Birthday: <input type='text' name='birthday' value=<?php echo "\"{$birthday}\""; ?> >
       <input type='submit' value='submit'>
     </form>
   </body>

@@ -5,17 +5,18 @@
 	    parent::__construct();
     	$this->load->library('session');
     	$this->load->database();
-    	$this->load->helper('url');
+      $this->load->helper('url');
+    	$this->load->helper('form');
 	    $this->load->model('user_model');
     } 
   
   	public function index() { 
       if(time() - $this->session->userdata['time'] > 900){
-        $this->session->sess_destroy();
-        redirect('login');
+        redirect('logout');
       }
       if($this->session->userdata('loginuser')){
       	$info = $this->user_model->get_info($this->session);
+        if($info['username'] == NULL) redirect('/');
       	$data = array(
       		'username' => $info['username'],
       		'name' => $info['name'],

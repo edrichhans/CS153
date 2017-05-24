@@ -1,12 +1,11 @@
 <?php
 
-  class Edit_other_user extends CI_Controller{
+  class Unsuper_other_user extends CI_Controller{
     public function __construct(){
       parent::__construct();
       $this->load->library('session');
       $this->load->database();
       $this->load->helper('url');
-      $this->load->helper('form');
       $this->load->model('admin_model');
     }
 
@@ -19,16 +18,11 @@
           redirect('/');
         }
         $id = $_GET['id'];
-        $info = $this->admin_model->get_other_info($id);
-        if($info['username'] == NULL) redirect('/');
-        $data = array(
-          'username' => $info['username'],
-          'name' => $info['name'],
-          'birthday' => $info['birthday'],
-          'address' => $info['address'],
-        );
-        // echo $info['name'];
-        $this->load->view('edit_other_user_view', $data);
+        $info = $this->admin_model->unsuper_user($id);
+        redirect('admin');
+      }
+      else{
+        redirect('/');
       }
     }
   }

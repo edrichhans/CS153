@@ -11,14 +11,14 @@ class delete_other_user_model extends CI_Model
 
   //get the username & password from tbl_usrs
   function delete_other_user($id){
-    $sql = "select super from logins where id = '".$id."'";
-    $query = $this->db->query($sql);
+    $sql = "select super from logins where id = ?";
+    $query = $this->db->query($sql, array($id));
     $super = $query->row()->super;
     if ($super == 0){
-      $sql1 = "delete from logins where id = '".$id."'";
-      $query1 = $this->db->query($sql1);
-      $sql2 = "delete from users where id = '".$id."'";
-      $query2 = $this->db->query($sql2);      
+      $sql1 = "delete from logins where id = ?";
+      $query1 = $this->db->query($sql1, array($id));
+      $sql2 = "delete from users where id = ?";
+      $query2 = $this->db->query($sql2, array($id));      
     }
   }
 }?>

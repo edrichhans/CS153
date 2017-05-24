@@ -11,12 +11,16 @@
 
     public function index(){
       if(time() - $this->session->userdata('time') > 900){
-        $this->session->sess_destroy();
-        redirect('login');
+        redirect('logout');
       }
+      if($this->session->userdata('super') && $this->session->userdata('loginuser')){
+        if(!isset($_GET['id'])){
+          redirect('/');
+        }
         $id = $_GET['id'];
         $info = $this->delete_other_user_model->delete_other_user($id);
         redirect("admin");
+      }
     }
   }
 

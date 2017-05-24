@@ -14,8 +14,8 @@
         redirect("login");
       }
       else {
-      	$this->session->sess_destroy();
         $this->logout_model->set_status($this->session);
+        $this->session->sess_destroy();
         redirect("login");
       }
     } 

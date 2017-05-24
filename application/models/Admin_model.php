@@ -35,4 +35,14 @@ class admin_model extends CI_Model
     $user_info_query = $this->db->query($user_info, array($id));
     return $user_info_query->row_array();
   }
+
+  function super_user($id){
+    $sql = "UPDATE logins SET super = 1 WHERE id = ?";
+    $query = $this->db->query($sql, array($id));
+  }
+
+  function unsuper_user($id){
+    $sql = "UPDATE logins SET super = 0 WHERE id = ?";
+    $query = $this->db->query($sql, array($id));
+  }
 }?>
