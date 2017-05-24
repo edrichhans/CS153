@@ -42,6 +42,6 @@
       Address: <input type='text' name='address' value=<?php echo "\"{$address}\""; ?> >
       Birthday: <input type='text' name='birthday' value=<?php echo "\"{$birthday}\""; ?> >
       <input type='submit' value='submit'>
-    </form>
+    <?php echo form_close();?>
   </body>
 </html>

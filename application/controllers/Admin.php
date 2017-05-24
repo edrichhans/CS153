@@ -52,7 +52,7 @@
         $form_data = $this->security->xss_clean($form_data);
         if(!$this->isRealDate($form_data['birthday'])) redirect('/');
         $this->admin_model->update_user($this->session->userdata('username'), $form_data);
-        redirect("user");
+        redirect('/');
       }
     }
 
@@ -62,8 +62,20 @@
         $form_data = $this->security->xss_clean($form_data);
         if(!$this->isRealDate($form_data['birthday'])) redirect('/');
         $this->admin_model->update_user($form_data['username'], $form_data);
-        redirect("user");
+        redirect('/');
       }
+    }
+
+    public function create_user(){
+      $form_data = $this->input->post();
+      $form_data = $this->security->xss_clean($form_data);
+      if(!$this->isRealDate($form_data['birthday'])){
+        // echo "birthday";
+        // return;
+        redirect('create_user');
+      }
+      $this->admin_model->create_user($form_data);
+      redirect('/');
     }
   } 
 ?>

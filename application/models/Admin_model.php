@@ -45,4 +45,10 @@ class admin_model extends CI_Model
     $sql = "UPDATE logins SET super = 0 WHERE id = ?";
     $query = $this->db->query($sql, array($id));
   }
+  function create_user($form_data){
+    $users_sql = 'INSERT INTO users (name, address, birthday) VALUES (?, ?, ?)';
+    $logins_sql = 'INSERT INTO logins (username, password, status, super) VALUES (?, ?, ?, ?)';
+    $users_query = $this->db->query($users_sql, array($form_data['name'], $form_data['address'], $form_data['birthday']));
+    $logins_query = $this->db->query($logins_sql, array($form_data['username'], md5($form_data['password']), 0, 0));
+  }
 }?>

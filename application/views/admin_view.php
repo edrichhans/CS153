@@ -35,7 +35,7 @@
 	<body>
     <h2>Welcome, <?php echo $name?></h2>
     <button type="button" onclick="window.location.replace('edit_user')">Edit Profile</button>
-    <button type="button" onclick="window.location.replace('add_user')">Create User</button>
+    <button type="button" onclick="window.location.replace('create_user')">Create User</button>
     <button type="button" onclick="window.location.replace('logout')">Logout</button>
 	    <h4>
         Username: <?php echo $username ?>
