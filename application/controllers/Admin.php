@@ -76,7 +76,7 @@
         $this->form_validation->set_rules('name', 'name', 'trim|required|max_length[50]');
         $this->form_validation->set_rules('address', 'address', 'trim|required|max_length[50]');
         $this->form_validation->set_rules('birthday', 'birthday', 'trim|required|max_length[50]');
-        // $this->form_validation->set_rules('username', 'username', "trim|required|min_length[6]|max_length[20]");
+        $this->form_validation->set_rules('username', 'username', "trim|required|min_length[4]|max_length[20]");
         if ($this->form_validation->run() == FALSE){
           //validation fails
           redirect('/');
